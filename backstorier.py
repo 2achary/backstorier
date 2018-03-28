@@ -1,5 +1,6 @@
 from enum import Enum
 import logging
+import wikipedia
 
 LOG = logging.getLogger(__name__)
 
