@@ -1,5 +1,7 @@
 from enum import Enum
 import logging
+import wikipedia
+import random
 
 LOG = logging.getLogger(__name__)
 
@@ -19,7 +21,7 @@ def get_deets(name='', gender='', alignment=''):
 
 
 class Alignment(Enum):
-    Good_Male = ['url page for good']
+    Good_Male = ['Winston Churchill', 'Mohandas Gandhi']
     Good_Female = ['url page for good']
     Neutral_Male = ['url page for neutral']
     Neutral_Female = ['url page for neutral']
@@ -36,6 +38,11 @@ BACKGROUND_SECTION_NAMES = [
 def _get_wikipedia_page(alignment: Alignment=None) -> str:
     if not isinstance(alignment, Alignment):
         raise TypeError("Must provide a valid alignment: {!s}".format(alignment))
+        
+    page_name = random.choice(alignment.value)
+    page = wikipedia.page(page_name)
+    return page.content
+    
 
 
 def _select_random_wiki_entry_from_page(wiki_page: str=None) -> str:
