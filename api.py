@@ -39,7 +39,7 @@ def _get_wikipedia_page(alignment: Alignment=None) -> str:
 
 
 def _select_random_wiki_entry_from_page(wiki_page: str=None) -> str:
-    if not isinstance(str, wiki_page):
+    if not isinstance(wiki_page, str):
         raise TypeError("Parameter 'wiki_page' must be a url string, found: <{!s}>".format(type(wiki_page)))
 
     # TODO: Find the links and choose a random one
